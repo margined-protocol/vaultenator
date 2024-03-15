@@ -16,6 +16,7 @@ pub struct OwnerProposal {
 }
 
 pub trait Own {
+    #[allow(clippy::too_many_arguments)]
     fn handle_ownership_proposal(
         &self,
         deps: DepsMut,
