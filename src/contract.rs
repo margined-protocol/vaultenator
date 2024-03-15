@@ -25,7 +25,7 @@ pub trait Describe {
     const VAULT_STANDARD_EXTENSIONS: [&'static str; 2];
 }
 
-pub trait MarginedVault<Config, State>:
+pub trait Vaultenator<Config, State>:
     Describe
     + Own
     + Handle<Config, State>
