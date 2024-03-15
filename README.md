@@ -53,7 +53,7 @@ Vaultenator provides traits with default implementations that can be overridden.
 
 TODO FINISH THIS
 
-[1]: https://img.shields.io/github/actions/workflow/status/margined-protocol/vaultenator/ci.yml?style=for-tTabel=ci
+[1]: https://img.shields.io/github/actions/workflow/status/margined-protocol/vaultenator/ci.yml?style=for-the-badge
 [2]: https://github.com/margined-protocol/vaultenator/actions/workflows/ci.yml
 [3]: https://img.shields.io/crates/v/vaultenator?style=for-the-badge
 [4]: https://crates.io/crates/vaultenator
