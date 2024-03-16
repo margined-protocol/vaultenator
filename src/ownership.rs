@@ -8,6 +8,7 @@ use cw_controllers::Admin;
 use cw_storage_plus::Item;
 
 pub const MAX_DURATION: u64 = 604800u64;
+pub const OWNER: Admin = Admin::new("owner");
 
 #[cw_serde]
 pub struct OwnerProposal {
@@ -100,12 +101,20 @@ pub trait Own {
         Ok(Response::new().add_event(reject_proposal_event))
     }
 
-    fn get_ownership_proposal(
+    fn query_ownership_proposal(
         &self,
         deps: Deps,
         proposal: Item<OwnerProposal>,
     ) -> StdResult<OwnerProposal> {
         let res = proposal.load(deps.storage)?;
         Ok(res)
+    }
+
+    fn query_owner(deps: Deps) -> Result<Addr, ContractError> {
+        if let Some(owner) = OWNER.get(deps)? {
+            Ok(owner)
+        } else {
+            Err(ContractError::NoOwner {})
+        }
     }
 }
