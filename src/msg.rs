@@ -24,8 +24,10 @@ pub enum ExtensionQueryMsg {
 
 #[cw_serde]
 pub enum MarginedExtensionQueryMsg {
+    Owner {},
     Config {},
     State {},
+    GetOwnershipProposal {},
 }
 
 #[cw_serde]
