@@ -131,6 +131,12 @@ where
                 ExtensionQueryMsg::Margined(msg) => match msg {
                     MarginedExtensionQueryMsg::Config {} => Self::query_config(deps),
                     MarginedExtensionQueryMsg::State {} => Self::query_state(deps),
+                    MarginedExtensionQueryMsg::Owner {} => {
+                        unimplemented!("not implemented")
+                    }
+                    MarginedExtensionQueryMsg::GetOwnershipProposal {} => {
+                        unimplemented!("not implemented")
+                    }
                 },
             },
         }
