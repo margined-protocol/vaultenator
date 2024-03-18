@@ -132,10 +132,12 @@ where
                     MarginedExtensionQueryMsg::Config {} => Self::query_config(deps),
                     MarginedExtensionQueryMsg::State {} => Self::query_state(deps),
                     MarginedExtensionQueryMsg::Owner {} => {
-                        unimplemented!("not implemented")
+                        let owner = Self::query_owner(deps)?;
+                        to_json_binary(&owner)
                     }
-                    MarginedExtensionQueryMsg::GetOwnershipProposal {} => {
-                        unimplemented!("not implemented")
+                    MarginedExtensionQueryMsg::OwnershipProposal {} => {
+                        let owner = Self::query_ownership_proposal(deps, OWNERSHIP_PROPOSAL)?;
+                        to_json_binary(&owner)
                     }
                 },
             },

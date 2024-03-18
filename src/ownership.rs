@@ -2,7 +2,8 @@ use crate::errors::ContractError;
 
 use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{
-    attr, ensure, ensure_eq, Addr, Deps, DepsMut, Env, Event, MessageInfo, Response, StdResult,
+    attr, ensure, ensure_eq, Addr, Deps, DepsMut, Env, Event, MessageInfo, Response, StdError,
+    StdResult,
 };
 use cw_controllers::Admin;
 use cw_storage_plus::Item;
@@ -102,7 +103,6 @@ pub trait Own {
     }
 
     fn query_ownership_proposal(
-        &self,
         deps: Deps,
         proposal: Item<OwnerProposal>,
     ) -> StdResult<OwnerProposal> {
@@ -110,11 +110,9 @@ pub trait Own {
         Ok(res)
     }
 
-    fn query_owner(deps: Deps) -> Result<Addr, ContractError> {
-        if let Some(owner) = OWNER.get(deps)? {
-            Ok(owner)
-        } else {
-            Err(ContractError::NoOwner {})
-        }
+    fn query_owner(deps: Deps) -> StdResult<Option<Addr>> {
+        OWNER
+            .get(deps)
+            .map_err(|e| StdError::generic_err(e.to_string()))
     }
 }
