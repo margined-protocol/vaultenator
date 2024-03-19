@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use crate::ownership::OwnerProposal;
 // use crate::structs::{Config, State};
-use cosmwasm_std::{Deps, DepsMut, Env, StdError, StdResult};
+use cosmwasm_std::{Deps, DepsMut, Env};
 use cw_controllers::Admin;
 
 pub const DEFAULT_STRATEGY_CAP: u128 = 10_000_000_000_000_000_000_000u128;
@@ -19,8 +19,8 @@ pub const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 pub trait ManageState: Serialize + DeserializeOwned + Sized {
     const STATE_KEY: &'static str;
 
-    fn is_open(&self) -> bool;
-    fn is_paused(&self) -> bool;
+    fn is_contract_open(deps: Deps) -> Result<bool, ContractError>;
+    fn is_contract_paused(deps: Deps) -> Result<bool, ContractError>;
     fn set_open(&mut self, open: bool);
     fn set_paused(&mut self, paused: bool);
 
@@ -45,16 +45,12 @@ pub trait ManageState: Serialize + DeserializeOwned + Sized {
         state_item.load(deps.storage).map_err(ContractError::from)
     }
 
-    fn is_open_and_unpaused(&self) -> StdResult<()> {
-        if !self.is_open() {
-            return Err(StdError::generic_err(
-                "Cannot perform action as contract is not open",
-            ));
+    fn is_open_and_unpaused(deps: Deps) -> Result<(), ContractError> {
+        if !Self::is_contract_open(deps)? {
+            return Err(ContractError::IsOpen {});
         }
-        if self.is_paused() {
-            return Err(StdError::generic_err(
-                "Cannot perform action as contract is paused",
-            ));
+        if Self::is_contract_paused(deps)? {
+            return Err(ContractError::Paused {});
         }
         Ok(())
     }

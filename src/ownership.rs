@@ -96,10 +96,10 @@ pub trait Own {
 
         owner.set(deps, Some(new_owner.clone()))?;
 
-        let reject_proposal_event =
+        let accept_proposal_event =
             Event::new("update_owner").add_attribute("new_owner", new_owner.to_string());
 
-        Ok(Response::new().add_event(reject_proposal_event))
+        Ok(Response::new().add_event(accept_proposal_event))
     }
 
     fn query_ownership_proposal(
