@@ -14,16 +14,16 @@ pub struct MigrateMsg {}
 
 #[cw_serde]
 pub enum ExtensionExecuteMsg {
-    Margined(MarginedExtensionExecuteMsg),
+    Vaultenator(VaultenatorExtensionExecuteMsg),
 }
 
 #[cw_serde]
 pub enum ExtensionQueryMsg {
-    Margined(MarginedExtensionQueryMsg),
+    Vaultenator(VaultenatorExtensionQueryMsg),
 }
 
 #[cw_serde]
-pub enum MarginedExtensionQueryMsg {
+pub enum VaultenatorExtensionQueryMsg {
     Owner {},
     Config {},
     State {},
@@ -31,7 +31,7 @@ pub enum MarginedExtensionQueryMsg {
 }
 
 #[cw_serde]
-pub enum MarginedExtensionExecuteMsg {
+pub enum VaultenatorExtensionExecuteMsg {
     ClaimOwnership {},
     Pause {},
     ProposeNewOwner { new_owner: String, duration: u64 },

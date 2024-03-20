@@ -10,8 +10,8 @@ use crate::{
     errors::ContractError,
     handlers::Handle,
     msg::{
-        ExecuteMsg, ExtensionExecuteMsg, ExtensionQueryMsg, InstantiateMsg,
-        MarginedExtensionExecuteMsg, MarginedExtensionQueryMsg, MigrateMsg, QueryMsg,
+        ExecuteMsg, ExtensionExecuteMsg, ExtensionQueryMsg, InstantiateMsg, MigrateMsg, QueryMsg,
+        VaultenatorExtensionExecuteMsg, VaultenatorExtensionQueryMsg,
     },
     ownership::Own,
     query::Query,
@@ -63,24 +63,26 @@ where
                 amount: _,
             } => self.handle_redeem(deps, env, info),
             ExecuteMsg::VaultExtension(msg) => match msg {
-                ExtensionExecuteMsg::Margined(msg) => match msg {
-                    MarginedExtensionExecuteMsg::ClaimOwnership {} => {
+                ExtensionExecuteMsg::Vaultenator(msg) => match msg {
+                    VaultenatorExtensionExecuteMsg::ClaimOwnership {} => {
                         self.handle_claim_ownership(deps, info, env, OWNER, OWNERSHIP_PROPOSAL)
                     }
-                    MarginedExtensionExecuteMsg::UnPause {} => {
+                    VaultenatorExtensionExecuteMsg::UnPause {} => {
                         self.handle_unpause_contract(deps, info)
                     }
-                    MarginedExtensionExecuteMsg::SetOpen {} => {
+                    VaultenatorExtensionExecuteMsg::SetOpen {} => {
                         self.handle_open_contract(deps, info)
                     }
-                    MarginedExtensionExecuteMsg::UpdateConfig {} => {
+                    VaultenatorExtensionExecuteMsg::UpdateConfig {} => {
                         unimplemented!("not implemented")
                         //handle_update_config(deps, info, new_config)
                     }
-                    MarginedExtensionExecuteMsg::RejectOwner {} => self
+                    VaultenatorExtensionExecuteMsg::RejectOwner {} => self
                         .handle_ownership_proposal_rejection(deps, info, OWNER, OWNERSHIP_PROPOSAL),
-                    MarginedExtensionExecuteMsg::Pause {} => self.handle_pause_contract(deps, info),
-                    MarginedExtensionExecuteMsg::ProposeNewOwner {
+                    VaultenatorExtensionExecuteMsg::Pause {} => {
+                        self.handle_pause_contract(deps, info)
+                    }
+                    VaultenatorExtensionExecuteMsg::ProposeNewOwner {
                         new_owner,
                         duration,
                     } => self.handle_ownership_proposal(
@@ -128,14 +130,14 @@ where
                 unimplemented!("not implemented")
             }
             QueryMsg::VaultExtension(msg) => match msg {
-                ExtensionQueryMsg::Margined(msg) => match msg {
-                    MarginedExtensionQueryMsg::Config {} => Self::query_config(deps),
-                    MarginedExtensionQueryMsg::State {} => Self::query_state(deps),
-                    MarginedExtensionQueryMsg::Owner {} => {
+                ExtensionQueryMsg::Vaultenator(msg) => match msg {
+                    VaultenatorExtensionQueryMsg::Config {} => Self::query_config(deps),
+                    VaultenatorExtensionQueryMsg::State {} => Self::query_state(deps),
+                    VaultenatorExtensionQueryMsg::Owner {} => {
                         let owner = Self::query_owner(deps)?;
                         to_json_binary(&owner)
                     }
-                    MarginedExtensionQueryMsg::OwnershipProposal {} => {
+                    VaultenatorExtensionQueryMsg::OwnershipProposal {} => {
                         let owner = Self::query_ownership_proposal(deps, OWNERSHIP_PROPOSAL)?;
                         to_json_binary(&owner)
                     }
