@@ -29,7 +29,7 @@ pub enum ContractError {
     InvalidFunds {},
 
     #[error("Invalid message")]
-    InvalidMessage {},
+    InvalidMessage { msg: String },
 
     #[error("Contract is already open")]
     IsOpen {},
