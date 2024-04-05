@@ -1,16 +1,14 @@
 use crate::errors::ContractError;
-use crate::msg::InstantiateMsg;
-use cw_storage_plus::Item;
-use serde::de::DeserializeOwned;
-use serde::Serialize;
-
 use cosmwasm_std::{Deps, DepsMut};
+use cw_storage_plus::Item;
+use serde::{de::DeserializeOwned, Serialize};
 
 pub trait Configure: Serialize + DeserializeOwned + Sized {
     const CONFIG_KEY: &'static str;
 
-    fn init_config(deps: &mut DepsMut, msg: &InstantiateMsg) -> Result<Self, ContractError>
+    fn init_config<M>(deps: &mut DepsMut, msg: &M) -> Result<Self, ContractError>
     where
+        M: Serialize + DeserializeOwned,
         Self: Sized;
 
     fn update_strategy_denom(&mut self, denom: String);
