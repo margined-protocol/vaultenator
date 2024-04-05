@@ -26,4 +26,4 @@ and this project adheres to
 
 [0.0.1]: https://github.com/margined-protocol/vaultenator/releases/tag/0.0.1
 [0.0.2]: https://github.com/margined-protocol/vaultenator/v0.0.1...v0.0.2
-[0.0.2]: https://github.com/margined-protocol/vaultenator/v0.0.2...v0.0.3
+[0.0.3]: https://github.com/margined-protocol/vaultenator/v0.0.2...v0.0.3
