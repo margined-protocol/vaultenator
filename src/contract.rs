@@ -2,7 +2,7 @@ use cosmwasm_std::{
     to_json_binary, Binary, Deps, DepsMut, Env, MessageInfo, Reply, Response, StdResult,
 };
 use cw_vault_standard::msg::VaultStandardInfoResponse;
-use serde::Serialize;
+use serde::{de::DeserializeOwned, Serialize};
 
 use crate::{
     admin::Administer,
@@ -10,7 +10,7 @@ use crate::{
     errors::ContractError,
     handlers::Handle,
     msg::{
-        ExecuteMsg, ExtensionExecuteMsg, ExtensionQueryMsg, InstantiateMsg, MigrateMsg, QueryMsg,
+        ExecuteMsg, ExtensionExecuteMsg, ExtensionQueryMsg, MigrateMsg, QueryMsg,
         VaultenatorExtensionExecuteMsg, VaultenatorExtensionQueryMsg,
     },
     ownership::Own,
@@ -36,13 +36,16 @@ where
     Config: Configure + Serialize,
     State: ManageState + Serialize,
 {
-    fn instantiate(
+    fn instantiate<Msg>(
         &self,
         deps: DepsMut,
         env: Env,
         info: MessageInfo,
-        msg: InstantiateMsg,
-    ) -> Result<Response, ContractError> {
+        msg: Msg,
+    ) -> Result<Response, ContractError>
+    where
+        Msg: Serialize + DeserializeOwned,
+    {
         self.handle_instantiate(deps, env, info, msg)
     }
 

@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.3] - 2014-04-5
+
+### Added
+
+- Support generic intstantiation
+
 ## [0.0.2] - 2014-03-20
 
 ### Fixed
@@ -20,3 +26,4 @@ and this project adheres to
 
 [0.0.1]: https://github.com/margined-protocol/vaultenator/releases/tag/0.0.1
 [0.0.2]: https://github.com/margined-protocol/vaultenator/v0.0.1...v0.0.2
+[0.0.2]: https://github.com/margined-protocol/vaultenator/v0.0.2...v0.0.3

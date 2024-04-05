@@ -28,6 +28,9 @@ pub enum ContractError {
     #[error("Invalid funds")]
     InvalidFunds {},
 
+    #[error("Invalid message")]
+    InvalidMessage {},
+
     #[error("Contract is already open")]
     IsOpen {},
 
