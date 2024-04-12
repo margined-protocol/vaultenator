@@ -38,7 +38,7 @@ pub enum VaultenatorExtensionExecuteMsg {
     RejectOwner {},
     SetOpen {},
     UpdateConfig {},
-    UnPause {},
+    Unpause {},
 }
 
 pub type ExecuteMsg = VaultStandardExecuteMsg<ExtensionExecuteMsg>;
