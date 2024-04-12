@@ -70,18 +70,6 @@ where
                     VaultenatorExtensionExecuteMsg::ClaimOwnership {} => {
                         self.handle_claim_ownership(deps, info, env, OWNER, OWNERSHIP_PROPOSAL)
                     }
-                    VaultenatorExtensionExecuteMsg::UnPause {} => {
-                        self.handle_unpause_contract(deps, info)
-                    }
-                    VaultenatorExtensionExecuteMsg::SetOpen {} => {
-                        self.handle_open_contract(deps, info)
-                    }
-                    VaultenatorExtensionExecuteMsg::UpdateConfig {} => {
-                        unimplemented!("not implemented")
-                        //handle_update_config(deps, info, new_config)
-                    }
-                    VaultenatorExtensionExecuteMsg::RejectOwner {} => self
-                        .handle_ownership_proposal_rejection(deps, info, OWNER, OWNERSHIP_PROPOSAL),
                     VaultenatorExtensionExecuteMsg::Pause {} => {
                         self.handle_pause_contract(deps, info)
                     }
@@ -97,6 +85,18 @@ where
                         OWNER,
                         OWNERSHIP_PROPOSAL,
                     ),
+                    VaultenatorExtensionExecuteMsg::RejectOwner {} => self
+                        .handle_ownership_proposal_rejection(deps, info, OWNER, OWNERSHIP_PROPOSAL),
+                    VaultenatorExtensionExecuteMsg::SetOpen {} => {
+                        self.handle_open_contract(deps, info)
+                    }
+                    VaultenatorExtensionExecuteMsg::Unpause {} => {
+                        self.handle_unpause_contract(deps, info)
+                    }
+                    VaultenatorExtensionExecuteMsg::UpdateConfig {} => {
+                        unimplemented!("not implemented")
+                        //handle_update_config(deps, info, new_config)
+                    }
                 },
             },
         }
