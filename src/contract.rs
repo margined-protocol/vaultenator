@@ -102,7 +102,7 @@ where
         }
     }
 
-    fn query(&self, deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
+    fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
         match msg {
             QueryMsg::VaultStandardInfo {} => to_json_binary(&VaultStandardInfoResponse {
                 version: Self::VAULT_STANDARD_VERSION,
@@ -111,26 +111,16 @@ where
                     .map(|&s| s.into())
                     .collect(),
             }),
-            QueryMsg::Info {} => {
-                unimplemented!("not implemented")
+            QueryMsg::Info {} => Self::query_info(deps, env),
+            QueryMsg::PreviewDeposit { amount } => Self::query_preview_deposit(amount, deps, env),
+            QueryMsg::PreviewRedeem { amount } => Self::query_preview_redeem(amount, deps, env),
+            QueryMsg::TotalAssets {} => Self::query_total_assets(deps, env),
+            QueryMsg::TotalVaultTokenSupply {} => Self::query_total_vault_token_supply(deps, env),
+            QueryMsg::ConvertToShares { amount } => {
+                Self::query_convert_to_shares(amount, deps, env)
             }
-            QueryMsg::PreviewDeposit { amount: _ } => {
-                unimplemented!("not implemented")
-            }
-            QueryMsg::PreviewRedeem { amount: _ } => {
-                unimplemented!("not implemented")
-            }
-            QueryMsg::TotalAssets {} => {
-                unimplemented!("not implemented")
-            }
-            QueryMsg::TotalVaultTokenSupply {} => {
-                unimplemented!("not implemented")
-            }
-            QueryMsg::ConvertToShares { amount: _ } => {
-                unimplemented!("not implemented")
-            }
-            QueryMsg::ConvertToAssets { amount: _ } => {
-                unimplemented!("not implemented")
+            QueryMsg::ConvertToAssets { amount } => {
+                Self::query_convert_to_assets(amount, deps, env)
             }
             QueryMsg::VaultExtension(msg) => match msg {
                 ExtensionQueryMsg::Vaultenator(msg) => match msg {
@@ -153,12 +143,7 @@ where
         self.handle_reply(deps, env, msg)
     }
 
-    fn migrate(
-        &self,
-        _deps: DepsMut,
-        _env: Env,
-        _msg: MigrateMsg,
-    ) -> Result<Response, ContractError> {
-        unimplemented!("not implemented")
+    fn migrate(&self, deps: DepsMut, env: Env, msg: MigrateMsg) -> Result<Response, ContractError> {
+        self.handle_migrate(deps, env, msg)
     }
 }
