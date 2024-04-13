@@ -1,6 +1,7 @@
 use crate::config::Configure;
 use crate::contract::Describe;
 use crate::errors::ContractError;
+use crate::msg::MigrateMsg;
 use crate::state::ManageState;
 use cosmwasm_std::{DepsMut, Env, MessageInfo, Response};
 use serde::{de::DeserializeOwned, Serialize};
@@ -40,5 +41,12 @@ where
         deps: DepsMut,
         env: Env,
         info: MessageInfo,
+    ) -> Result<Response, ContractError>;
+
+    fn handle_migrate(
+        &self,
+        deps: DepsMut,
+        env: Env,
+        msg: MigrateMsg,
     ) -> Result<Response, ContractError>;
 }
