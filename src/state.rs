@@ -46,10 +46,10 @@ pub trait ManageState: Serialize + DeserializeOwned + Sized {
     }
 
     fn is_open_and_unpaused(deps: Deps) -> Result<(), ContractError> {
-        if Self::is_contract_open(deps)? {
-            return Err(ContractError::IsOpen {});
+        if !Self::is_contract_open(deps)? {
+            return Err(ContractError::NotOpen {});
         }
-        if !Self::is_contract_paused(deps)? {
+        if Self::is_contract_paused(deps)? {
             return Err(ContractError::Paused {});
         }
         Ok(())
