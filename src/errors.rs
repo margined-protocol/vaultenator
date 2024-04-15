@@ -37,6 +37,9 @@ pub enum ContractError {
     #[error("Contract is not paused")]
     NotPaused {},
 
+    #[error("Cannot perform action as contract is not open")]
+    NotOpen {},
+
     #[error("Owner not set")]
     NoOwner {},
 
