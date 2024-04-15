@@ -102,7 +102,7 @@ where
         }
     }
 
-    fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
+    fn query(&self, deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
         match msg {
             QueryMsg::VaultStandardInfo {} => to_json_binary(&VaultStandardInfoResponse {
                 version: Self::VAULT_STANDARD_VERSION,
