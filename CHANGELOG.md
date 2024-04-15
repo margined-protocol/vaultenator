@@ -71,4 +71,5 @@ and this project adheres to
 [0.0.5]: https://github.com/margined-protocol/vaultenator/0.0.4...0.0.5
 [0.0.6]: https://github.com/margined-protocol/vaultenator/0.0.5...0.0.6
 [0.0.7]: https://github.com/margined-protocol/vaultenator/0.0.6...0.0.7
-[0.0.7]: https://github.com/margined-protocol/vaultenator/0.0.7...0.0.8
+[0.0.8]: https://github.com/margined-protocol/vaultenator/0.0.7...0.0.8
+[0.0.9]: https://github.com/margined-protocol/vaultenator/0.0.8...0.0.9
