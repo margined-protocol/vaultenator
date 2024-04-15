@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.8] - 2014-04-15
+
+### Changed
+
+- Add missing NotOpen error message
+
 ## [0.0.7] - 2014-04-15
 
 ### Changed
@@ -53,9 +59,10 @@ and this project adheres to
 - Initial release
 
 [0.0.1]: https://github.com/margined-protocol/vaultenator/releases/tag/0.0.1
-[0.0.2]: https://github.com/margined-protocol/vaultenator/v0.0.1...v0.0.2
-[0.0.3]: https://github.com/margined-protocol/vaultenator/v0.0.2...v0.0.3
-[0.0.4]: https://github.com/margined-protocol/vaultenator/v0.0.3...v0.0.4
-[0.0.5]: https://github.com/margined-protocol/vaultenator/v0.0.4...v0.0.5
-[0.0.6]: https://github.com/margined-protocol/vaultenator/v0.0.5...v0.0.6
-[0.0.7]: https://github.com/margined-protocol/vaultenator/v0.0.6...v0.0.7
+[0.0.2]: https://github.com/margined-protocol/vaultenator/0.0.1...0.0.2
+[0.0.3]: https://github.com/margined-protocol/vaultenator/0.0.2...0.0.3
+[0.0.4]: https://github.com/margined-protocol/vaultenator/0.0.3...0.0.4
+[0.0.5]: https://github.com/margined-protocol/vaultenator/0.0.4...0.0.5
+[0.0.6]: https://github.com/margined-protocol/vaultenator/0.0.5...0.0.6
+[0.0.7]: https://github.com/margined-protocol/vaultenator/0.0.6...0.0.7
+[0.0.7]: https://github.com/margined-protocol/vaultenator/0.0.7...0.0.8
