@@ -31,7 +31,7 @@ cw-vault-standard = "0.4.0"
 cw2               = "1.1.2"
 osmosis-std       = "0.22.0"
 serde             = "1.0.197"
-thiserror         = "1.0.57"
+thiserror         = "1.0.59"
 
 [dev-dependencies]
 osmosis-test-tube = "22.1.0"
