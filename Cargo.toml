@@ -34,4 +34,4 @@ serde             = "1.0.197"
 thiserror         = "1.0.57"
 
 [dev-dependencies]
-osmosis-test-tube = "22.1.0"
+osmosis-test-tube = "24.0.1"
