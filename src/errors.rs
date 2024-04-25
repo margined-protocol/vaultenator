@@ -52,6 +52,17 @@ pub enum ContractError {
     #[error("Strategy Cap Exceeded")]
     StrategyCapExceeded {},
 
+    #[error("Serialization error")]
+    SerializationError { msg: String },
+
     #[error("Unauthorized")]
     Unauthorized {},
+}
+
+impl From<serde_json::Error> for ContractError {
+    fn from(err: serde_json::Error) -> Self {
+        ContractError::SerializationError {
+            msg: err.to_string(),
+        }
+    }
 }
