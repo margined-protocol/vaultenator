@@ -4,7 +4,7 @@ pub mod contract;
 pub mod errors;
 pub mod handlers;
 pub mod maths;
-// pub mod msg;
+pub mod msg;
 pub mod ownership;
 pub mod query;
 pub mod reply;
