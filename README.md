@@ -28,6 +28,25 @@ cargo add vaultenator
 Implement traits or include default implementations. See the [Example Vault][5]
 for an exmaple implementation using Vaulteantor.
 
+## Development
+
+```sh
+# Build contract
+cargo wasm
+# Run tests
+cargo test
+# Check formatting
+cargo fmt --all -- --check
+# Run clippy
+cargo clippy -- -D warnings
+```
+
+A git pre-commit script is available to run these checks.
+
+```sh
+cp ./scripts/pre-commmit .git/hooks/
+```
+
 [1]: https://img.shields.io/github/actions/workflow/status/margined-protocol/vaultenator/ci.yml?style=for-the-badge
 [2]: https://github.com/margined-protocol/vaultenator/actions/workflows/ci.yml
 [3]: https://img.shields.io/crates/v/vaultenator?style=for-the-badge

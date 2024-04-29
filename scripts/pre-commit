@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# Check formatting
+echo "Checking formatting..."
+cargo fmt --all -- --check
+
+# Run clippy
+echo "Running clippy..."
+cargo clippy -- -D warnings
+
+# Build the contract
+echo "Building the contract with cargo wasm..."
+cargo wasm
+
+# Run tests
+echo "Running tests..."
+cargo test
+
+exit 0
