@@ -1,4 +1,4 @@
-use cosmwasm_std::StdError;
+use cosmwasm_std::{OverflowError, StdError};
 use cw_controllers::AdminError;
 use thiserror::Error;
 
@@ -42,6 +42,9 @@ pub enum ContractError {
 
     #[error("Owner not set")]
     NoOwner {},
+
+    #[error("Overflow occurred: {0}")]
+    Overflow(OverflowError),
 
     #[error("Cannot perform action as contract is paused")]
     Paused {},
