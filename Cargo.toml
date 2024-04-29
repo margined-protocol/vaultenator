@@ -12,7 +12,7 @@ readme       = "README.md"
 repository   = "https://github.com/margined-protocol/vaultenator"
 resolver     = "2"
 rust-version = "1.77.2"
-version      = "0.1.1"
+version      = "0.2.0"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -27,7 +27,7 @@ cosmwasm-std      = "1.5.3"
 cw-controllers    = "1.1.2"
 cw-storage-plus   = "1.2.0"
 cw-utils          = "1.0.3"
-cw-vault-standard = "0.4.0"
+cw-vault-standard = "0.3.3"
 cw2               = "1.1.2"
 osmosis-std       = "0.24.0"
 serde             = "1.0.197"
