@@ -1,5 +1,5 @@
 use crate::errors::ContractError;
-use cosmwasm_std::{Deps, DepsMut, MessageInfo, Response};
+use cosmwasm_std::{Deps, DepsMut, Env, MessageInfo, Response};
 use cw_storage_plus::Item;
 use serde::{de::DeserializeOwned, Serialize};
 
@@ -26,6 +26,7 @@ pub trait Configure: Serialize + DeserializeOwned + Sized {
     fn handle_update_config<M>(
         deps: &mut DepsMut,
         info: MessageInfo,
+        env: Env,
         msg: M,
     ) -> Result<Response, ContractError>
     where
