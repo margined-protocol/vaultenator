@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2014-04-30
+
+### Added
+
+- Add `calculate_fee_rate_and_remainder`
+
 ## [0.2.0] - 2014-04-29
 
 ### Added
@@ -100,3 +106,7 @@ and this project adheres to
 [0.0.7]: https://github.com/margined-protocol/vaultenator/0.0.6...0.0.7
 [0.0.8]: https://github.com/margined-protocol/vaultenator/0.0.7...0.0.8
 [0.0.9]: https://github.com/margined-protocol/vaultenator/0.0.8...0.0.9
+[0.1.0]: https://github.com/margined-protocol/vaultenator/0.0.9...0.1.0
+[0.1.1]: https://github.com/margined-protocol/vaultenator/0.1.0...0.1.1
+[0.2.0]: https://github.com/margined-protocol/vaultenator/0.1.1...0.2.0
+[0.2.1]: https://github.com/margined-protocol/vaultenator/0.2.0...0.2.1
