@@ -1,4 +1,4 @@
-use cosmwasm_std::{StdError, Uint128};
+use cosmwasm_std::{Decimal, StdError, StdResult, Uint128};
 
 pub const DEFAULT_STRATEGY_TOKENS_PER_DEPOSITED_BASE_TOKEN: Uint128 = Uint128::new(1_000_000);
 
@@ -16,8 +16,19 @@ pub fn calculate_strategy_tokens(
     Ok(strategy_tokens)
 }
 
+pub fn calculate_fee_and_remainder(
+    amount: Uint128,
+    fee_rate: Decimal,
+) -> StdResult<(Uint128, Uint128)> {
+    let remainder = amount * (Decimal::one() - fee_rate);
+    let fee = amount.checked_sub(remainder)?;
+    Ok((fee, remainder))
+}
+
 #[cfg(test)]
 mod tests {
+    use std::str::FromStr;
+
     use super::*;
 
     #[test]
@@ -54,5 +65,49 @@ mod tests {
             calculate_strategy_tokens(base_tokens, total_staked_amount, strategy_token_supply)
                 .unwrap();
         assert_eq!(result, Uint128::new(1_000_000)); // Should match the strategy token supply because ratio is 1:1
+    }
+
+    #[test]
+    fn test_calculate_fee_and_remainder_with_basic_fee() {
+        let fee_rate = Decimal::percent(10);
+        let amount = Uint128::new(1000);
+        let expected_fee = Uint128::new(100);
+        let expected_remainder = Uint128::new(900);
+        let (fee, remainder) = calculate_fee_and_remainder(amount, fee_rate).unwrap();
+        assert_eq!(fee, expected_fee);
+        assert_eq!(remainder, expected_remainder);
+    }
+
+    #[test]
+    fn test_calculate_fee_and_remainder_with_zero_fee_rate() {
+        let fee_rate = Decimal::zero();
+        let amount = Uint128::new(1000);
+        let expected_fee = Uint128::new(0);
+        let expected_remainder = Uint128::new(1000);
+        let (fee, remainder) = calculate_fee_and_remainder(amount, fee_rate).unwrap();
+        assert_eq!(fee, expected_fee);
+        assert_eq!(remainder, expected_remainder);
+    }
+
+    #[test]
+    fn test_calculate_fee_and_remainder_with_100_percent_fee_rate() {
+        let fee_rate = Decimal::percent(100);
+        let amount = Uint128::new(1000);
+        let expected_fee = Uint128::new(1000);
+        let expected_remainder = Uint128::zero();
+        let (fee, remainder) = calculate_fee_and_remainder(amount, fee_rate).unwrap();
+        assert_eq!(fee, expected_fee);
+        assert_eq!(remainder, expected_remainder);
+    }
+
+    #[test]
+    fn test_calculate_fee_and_remainder_with_small_fractional_fee_rate() {
+        let fee_rate = Decimal::from_str("0.05").unwrap();
+        let amount = Uint128::new(1000);
+        let expected_fee = Uint128::new(50);
+        let expected_remainder = Uint128::new(950);
+        let (fee, remainder) = calculate_fee_and_remainder(amount, fee_rate).unwrap();
+        assert_eq!(fee, expected_fee);
+        assert_eq!(remainder, expected_remainder);
     }
 }
