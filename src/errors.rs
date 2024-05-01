@@ -40,6 +40,9 @@ pub enum ContractError {
     #[error("Cannot perform action as contract is not open")]
     NotOpen {},
 
+    #[error("Not found")]
+    NotFound { msg: String },
+
     #[error("Owner not set")]
     NoOwner {},
 
