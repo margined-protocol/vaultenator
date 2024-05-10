@@ -31,6 +31,9 @@ pub enum ContractError {
     #[error("Invalid message")]
     InvalidMessage { msg: String },
 
+    #[error("Invalid Pool Route: {reason:?}")]
+    InvalidPoolRoute { reason: String },
+
     #[error("Contract is already open")]
     IsOpen {},
 
