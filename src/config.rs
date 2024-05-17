@@ -34,5 +34,5 @@ pub trait Configure: Serialize + DeserializeOwned + Sized {
 
     fn update_strategy_denom(&mut self, denom: String);
 
-    fn validate(&self) -> Result<(), ContractError>;
+    fn validate(&self, deps: &mut DepsMut) -> Result<(), ContractError>;
 }
