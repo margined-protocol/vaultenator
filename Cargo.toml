@@ -30,7 +30,7 @@ cw-utils          = "1.0.3"
 cw-vault-standard = "0.3.3"
 cw2               = "1.1.2"
 osmosis-std       = "0.25.0"
-serde             = "1.0.200"
+serde             = "1.0.203"
 serde_json        = "1.0.115"
 thiserror         = "1.0.57"
 
