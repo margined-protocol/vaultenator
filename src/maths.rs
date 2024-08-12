@@ -20,7 +20,7 @@ pub fn calculate_fee_and_remainder(
     amount: Uint128,
     fee_rate: Decimal,
 ) -> StdResult<(Uint128, Uint128)> {
-    let remainder = amount * (Decimal::one() - fee_rate);
+    let remainder: Uint128 = amount.mul_floor(Decimal::one() - fee_rate);
     let fee = amount.checked_sub(remainder)?;
     Ok((fee, remainder))
 }

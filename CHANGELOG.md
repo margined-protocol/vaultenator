@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.5.0] - 2014-05-17
+## [0.6.0] - 2024-08-12
+
+### Added
+
+- Updated deps to support cosmwasm 2.0
+
+## [0.5.0] - 2024-05-17
 
 ### Added
 
@@ -16,37 +22,37 @@ and this project adheres to
 
 - Pass deps to validate in Config
 
-## [0.4.1] - 2014-05-10
+## [0.4.1] - 2024-05-10
 
 ### Added
 
 - Add InvalidPoolRoute error
 
-## [0.4.0] - 2014-05-07
+## [0.4.0] - 2024-05-07
 
 ### Change
 
 - Don't return Binary from queries
 
-## [0.3.1] - 2014-05-01
+## [0.3.1] - 2024-05-01
 
 ### Added
 
 - Add `ContractError::NotFound`
 
-## [0.3.0] - 2014-04-30
+## [0.3.0] - 2024-04-30
 
 ### Added
 
 - Add env to handle_update_config
 
-## [0.2.1] - 2014-04-30
+## [0.2.1] - 2024-04-30
 
 ### Added
 
 - Add `calculate_fee_rate_and_remainder`
 
-## [0.2.0] - 2014-04-29
+## [0.2.0] - 2024-04-29
 
 ### Added
 
@@ -56,13 +62,13 @@ and this project adheres to
 
 - Fix yanked cw-vault-standard crate version
 
-## [0.1.1] - 2014-04-25
+## [0.1.1] - 2024-04-25
 
 ### Changed
 
 - Restore msg.rs
 
-## [0.1.0] - 2014-04-25
+## [0.1.0] - 2024-04-25
 
 ### Changed
 
@@ -73,19 +79,19 @@ and this project adheres to
 
 - Add initial maths file
 
-## [0.0.9] - 2014-04-15
+## [0.0.9] - 2024-04-15
 
 ### Fixed
 
 - Fix open and paused check
 
-## [0.0.8] - 2014-04-15
+## [0.0.8] - 2024-04-15
 
 ### Changed
 
 - Add missing NotOpen error message
 
-## [0.0.7] - 2014-04-15
+## [0.0.7] - 2024-04-15
 
 ### Changed
 
@@ -95,37 +101,37 @@ and this project adheres to
 
 - Add self to query
 
-## [0.0.6] - 2014-04-13
+## [0.0.6] - 2024-04-13
 
 ### Changed
 
 - Expose migrate and queries
 
-## [0.0.5] - 2014-04-12
+## [0.0.5] - 2024-04-12
 
 ### Changed
 
 - Correct unpause message name
 
-## [0.0.4] - 2014-04-05
+## [0.0.4] - 2024-04-05
 
 ### Added
 
 - Extend error message
 
-## [0.0.3] - 2014-04-05
+## [0.0.3] - 2024-04-05
 
 ### Added
 
 - Support generic intstantiation
 
-## [0.0.2] - 2014-03-20
+## [0.0.2] - 2024-03-20
 
 ### Fixed
 
 - Set publish to true in Cargo.toml
 
-## [0.0.1] - 2014-03-20
+## [0.0.1] - 2024-03-20
 
 ### Added
 
