@@ -1,7 +1,7 @@
 use crate::config::Configure;
 use crate::errors::ContractError;
 use cosmwasm_std::{DepsMut, Env, Reply, Response, SubMsgResult};
-use osmosis_std::types::osmosis::tokenfactory::v1beta1::MsgCreateDenomResponse;
+use neutron_std::types::osmosis::tokenfactory::v1beta1::MsgCreateDenomResponse;
 use serde::Serialize;
 pub const CREATE_STRATEGY_DENOM_REPLY_ID: u64 = 1u64;
 
