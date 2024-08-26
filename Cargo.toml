@@ -29,6 +29,6 @@ cw-utils          = "2.0.0"
 cw-vault-standard = "0.3.3"
 cw2               = "2.0.0"
 neutron-std       = { package = "margined-neutron-std", version = "4.2.0" }
-serde             = "1.0.207"
+serde             = "1.0.209"
 serde_json        = "1.0.124"
 thiserror         = "1.0.63"
