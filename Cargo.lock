@@ -468,9 +468,9 @@ dependencies = [
 
 [[package]]
 name = "cw-vault-standard"
-version = "0.3.3"
+version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "908934004eb811c72acd4d2d4f6d936695a7e9236815c01c4b6ce3f47c29d272"
+checksum = "43fbbb3afa851140ffe148a8f31fca921d9ba4542709a1b8b7271de940e0b688"
 dependencies = [
  "cosmwasm-schema",
  "cosmwasm-std",
